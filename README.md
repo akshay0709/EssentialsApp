@@ -174,3 +174,14 @@ Step 4:
 - The About pages displays all the information about our development team.
 ![about](https://cloud.githubusercontent.com/assets/25421655/26038770/a7223296-38c4-11e7-988c-cb1db7af5984.jpg)
 
+
+
+
+
+#### Team Members:
+
+- Akshay Pawar 
+- Harshada Chaundkar
+- Manali Tawde
+- Remilda Dsilva
+- Tushar Kamble
