@@ -130,6 +130,54 @@ export default Ember.Route.extend({
 ```
 * The returned data was then displayed in the search results.
 
+#### Realtime user reviews using Firebase
+
+- User reviews is displayed on the url.
+- User can add reviews about the website using "Rate Us" link.
+- Once user click the "Rate Us" link, two input box will appear. One input box will accepts the user's name and another input box accepts the user's review.  
+
+```javascript
+<div class="new-msg-link">{{#link-to 'messages.new'}}Add a new message{{/link-to}}</div>
+
+{{outlet}}
+{{#each model as |message|}}
+    <div class="each-msg">{{message.name}}: {{message.body}}</div>
+{{/each}}
+Controller
+```
+
+* In message controller, the addMessage function will create a record and update it in Firebase database through emberfire adapters. 
+```javascript
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
+    actions: {
+        addMessage: function() {
+            var newMessage = this.store.createRecord('message', {
+                name: this.get('name'),
+                body: this.get('body')
+            });
+            newMessage.save();
+            this.setProperties({
+                name: '',
+                body: ''
+            });
+        }
+    }
+});
+```
+
+* In message model, the model imports the DS from ember-data and it exports attributes to the controller
+
+```javascript
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  name: DS.attr('string'),
+  body: DS.attr('string')
+});
+
+```
 
 
 ## User Manual:
